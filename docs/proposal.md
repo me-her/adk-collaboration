@@ -1,3 +1,5 @@
+This design is being discussed in [upstream RFC #7642](https://github.com/google/adk-python/issues/7642).
+
 ### Is your feature request related to a specific problem?
 
 ADK 2.x already supports runtime agent dispatch through `Workflow` and

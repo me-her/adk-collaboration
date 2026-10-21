@@ -131,8 +131,14 @@ private session history and model/tool implementation memory are separate.
 ## Upstream path
 
 The small `Agent(parallel_worker=True, max_parallel_workers=...)` change lives
-in a separate ADK contribution. This experiment asks for agreement on lifecycle
+in [upstream issue #7641](https://github.com/google/adk-python/issues/7641).
+[RFC #7642](https://github.com/google/adk-python/issues/7642) requests feedback
+on the broader contract and links the executable evidence. This experiment asks for agreement on lifecycle
 semantics before proposing core APIs. See [the design proposal](docs/proposal.md)
 for acceptance criteria and links to existing work. Possible focused pieces
 include progress observation, cancellation states, or acknowledged messaging,
 depending on maintainer direction.
+
+The separate [installed-wheel smoke test](upstream/agent_worker_smoke.py)
+checks the proposed agent-worker limit. It requires the patched ADK wheel;
+the collaboration extension itself runs against the published package.
