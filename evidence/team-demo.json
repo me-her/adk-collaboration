@@ -1,0 +1,825 @@
+{
+  "provider_calls": 0,
+  "peak_active_workers": 4,
+  "assertions": {
+    "parent_continued_with_four_live_children": true,
+    "progress_visible_before_completion": true,
+    "first_completion_observed_before_siblings": true,
+    "conflict_rejected_without_partial_write": true
+  },
+  "messages_seen_in_actual_model_requests": {
+    "researcher": true,
+    "writer": true
+  },
+  "tasks": [
+    {
+      "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+      "worker": "researcher",
+      "status": "succeeded",
+      "error": null,
+      "result": {
+        "output": "researcher completed",
+        "updates": {
+          "decision": "use primary evidence"
+        }
+      }
+    },
+    {
+      "task_id": "20ae479fe278435980290c52e80ce3e2",
+      "worker": "critic",
+      "status": "succeeded",
+      "error": null,
+      "result": {
+        "output": "critic completed",
+        "updates": {
+          "decision": "different recommendation",
+          "review": "review complete"
+        }
+      }
+    },
+    {
+      "task_id": "535c87b100494d148fff88a53a60dfa7",
+      "worker": "writer",
+      "status": "succeeded",
+      "error": null,
+      "result": {
+        "output": "writer completed",
+        "updates": {
+          "draft": "draft using delivered evidence"
+        }
+      }
+    },
+    {
+      "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+      "worker": "slow",
+      "status": "cancelled",
+      "error": null
+    }
+  ],
+  "merged_state": {
+    "decision": "use primary evidence",
+    "draft": "draft using delivered evidence"
+  },
+  "observer_journal": {
+    "cursor": 39,
+    "events": [
+      {
+        "cursor": 1,
+        "time": 1792547734.3700569,
+        "kind": "task_queued",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "worker": "researcher"
+        }
+      },
+      {
+        "cursor": 2,
+        "time": 1792547734.370442,
+        "kind": "task_queued",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "worker": "critic"
+        }
+      },
+      {
+        "cursor": 3,
+        "time": 1792547734.370529,
+        "kind": "task_queued",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "worker": "writer"
+        }
+      },
+      {
+        "cursor": 4,
+        "time": 1792547734.3706,
+        "kind": "task_queued",
+        "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+        "payload": {
+          "worker": "slow"
+        }
+      },
+      {
+        "cursor": 5,
+        "time": 1792547734.370657,
+        "kind": "task_running",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "worker": "researcher"
+        }
+      },
+      {
+        "cursor": 6,
+        "time": 1792547734.371325,
+        "kind": "task_running",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "worker": "critic"
+        }
+      },
+      {
+        "cursor": 7,
+        "time": 1792547734.371744,
+        "kind": "task_running",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "worker": "writer"
+        }
+      },
+      {
+        "cursor": 8,
+        "time": 1792547734.372137,
+        "kind": "task_running",
+        "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+        "payload": {
+          "worker": "slow"
+        }
+      },
+      {
+        "cursor": 9,
+        "time": 1792547734.3764448,
+        "kind": "adk_event",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-8e769461-8f9d-4f03-b514-bfa76d58f875",
+                  "args": {},
+                  "name": "do_work"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-b98203a0-f83c-4dd1-b838-308f1335d293",
+          "author": "researcher",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "researcher@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "1b323993-8ffb-4203-9bc1-4feba1c7ad5f",
+          "timestamp": 1792547734.3748102
+        }
+      },
+      {
+        "cursor": 10,
+        "time": 1792547734.376503,
+        "kind": "adk_event",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-f03892b2-6288-4bee-8be3-19abde89170a",
+                  "args": {},
+                  "name": "do_work"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-211f960c-a9c6-4ac2-8b79-b2678b182f9c",
+          "author": "critic",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "critic@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "86a7072c-82fc-4bfb-803b-ac068a22a1a1",
+          "timestamp": 1792547734.375245
+        }
+      },
+      {
+        "cursor": 11,
+        "time": 1792547734.37655,
+        "kind": "adk_event",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-be8d2657-e2cc-4502-babc-b5a0f1dad948",
+                  "args": {},
+                  "name": "do_work"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-e9fe8d9f-870a-4619-bb35-07625f85491c",
+          "author": "writer",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "writer@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "a1c13e56-cf08-4604-b20d-177f8958464e",
+          "timestamp": 1792547734.375592
+        }
+      },
+      {
+        "cursor": 12,
+        "time": 1792547734.376595,
+        "kind": "adk_event",
+        "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-35f5682c-f793-4dce-8f9d-9d3e1f0a80b6",
+                  "args": {},
+                  "name": "do_work"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-9b81899c-91b7-44a3-a27d-19039e65ebe0",
+          "author": "slow",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "slow@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "4474c271-6b31-4ef2-be50-0fb1fa675149",
+          "timestamp": 1792547734.375933
+        }
+      },
+      {
+        "cursor": 13,
+        "time": 1792547734.3771079,
+        "kind": "work_started",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "worker": "researcher"
+        }
+      },
+      {
+        "cursor": 14,
+        "time": 1792547734.377144,
+        "kind": "work_started",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "worker": "critic"
+        }
+      },
+      {
+        "cursor": 15,
+        "time": 1792547734.377172,
+        "kind": "work_started",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "worker": "writer"
+        }
+      },
+      {
+        "cursor": 16,
+        "time": 1792547734.3771951,
+        "kind": "work_started",
+        "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+        "payload": {
+          "worker": "slow"
+        }
+      },
+      {
+        "cursor": 17,
+        "time": 1792547734.377642,
+        "kind": "message_queued",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "id": "270e4715286b4467841812ae9a8543e1",
+          "sender": "coordinator"
+        }
+      },
+      {
+        "cursor": 18,
+        "time": 1792547734.377722,
+        "kind": "task_cancelling",
+        "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+        "payload": {}
+      },
+      {
+        "cursor": 19,
+        "time": 1792547734.3779871,
+        "kind": "task_terminal",
+        "task_id": "cfbfa56707a741b0a8d669cac4c56126",
+        "payload": {
+          "status": "cancelled",
+          "error": null
+        }
+      },
+      {
+        "cursor": 20,
+        "time": 1792547734.378914,
+        "kind": "adk_event",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_response": {
+                  "id": "adk-8e769461-8f9d-4f03-b514-bfa76d58f875",
+                  "name": "do_work",
+                  "response": {
+                    "result": "I/O completed"
+                  }
+                }
+              }
+            ],
+            "role": "user"
+          },
+          "invocation_id": "e-b98203a0-f83c-4dd1-b838-308f1335d293",
+          "author": "researcher",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "researcher@1"
+          },
+          "id": "12141a18-2138-4176-aa0f-35585647e0ff",
+          "timestamp": 1792547734.378758
+        }
+      },
+      {
+        "cursor": 21,
+        "time": 1792547734.379541,
+        "kind": "message_delivered",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "id": "270e4715286b4467841812ae9a8543e1"
+        }
+      },
+      {
+        "cursor": 22,
+        "time": 1792547734.37981,
+        "kind": "adk_event",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-c0e6d94d-8ac3-4b1a-8499-ca70cc025c57",
+                  "args": {},
+                  "name": "propose"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-b98203a0-f83c-4dd1-b838-308f1335d293",
+          "author": "researcher",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "researcher@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "333dfa89-4ad4-4338-94e2-e417e320c8c9",
+          "timestamp": 1792547734.379468
+        }
+      },
+      {
+        "cursor": 23,
+        "time": 1792547734.380136,
+        "kind": "adk_event",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_response": {
+                  "id": "adk-c0e6d94d-8ac3-4b1a-8499-ca70cc025c57",
+                  "name": "propose",
+                  "response": {
+                    "result": "proposed privately"
+                  }
+                }
+              }
+            ],
+            "role": "user"
+          },
+          "invocation_id": "e-b98203a0-f83c-4dd1-b838-308f1335d293",
+          "author": "researcher",
+          "actions": {
+            "state_delta": {
+              "decision": "use primary evidence"
+            },
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "researcher@1"
+          },
+          "id": "e8f1f0f8-663d-4181-8513-e8db0f547a55",
+          "timestamp": 1792547734.38
+        }
+      },
+      {
+        "cursor": 24,
+        "time": 1792547734.3806689,
+        "kind": "adk_event",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "text": "researcher completed"
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-b98203a0-f83c-4dd1-b838-308f1335d293",
+          "author": "researcher",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "researcher@1"
+          },
+          "id": "072e17f8-1b6e-48f4-bf24-89e634da51ee",
+          "timestamp": 1792547734.380448
+        }
+      },
+      {
+        "cursor": 25,
+        "time": 1792547734.381057,
+        "kind": "task_terminal",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "status": "succeeded",
+          "error": null
+        }
+      },
+      {
+        "cursor": 26,
+        "time": 1792547734.382147,
+        "kind": "state_merged",
+        "task_id": "891b4cc569d344c1a7b8b67c146bceb4",
+        "payload": {
+          "keys": [
+            "decision"
+          ]
+        }
+      },
+      {
+        "cursor": 27,
+        "time": 1792547734.382219,
+        "kind": "message_queued",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "id": "613c80f68ee846799c2eff96f731fd19",
+          "sender": "coordinator"
+        }
+      },
+      {
+        "cursor": 28,
+        "time": 1792547734.383254,
+        "kind": "adk_event",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_response": {
+                  "id": "adk-f03892b2-6288-4bee-8be3-19abde89170a",
+                  "name": "do_work",
+                  "response": {
+                    "result": "I/O completed"
+                  }
+                }
+              }
+            ],
+            "role": "user"
+          },
+          "invocation_id": "e-211f960c-a9c6-4ac2-8b79-b2678b182f9c",
+          "author": "critic",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "critic@1"
+          },
+          "id": "35958b6e-893a-4234-a22c-e619e949e964",
+          "timestamp": 1792547734.38304
+        }
+      },
+      {
+        "cursor": 29,
+        "time": 1792547734.383302,
+        "kind": "adk_event",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_response": {
+                  "id": "adk-be8d2657-e2cc-4502-babc-b5a0f1dad948",
+                  "name": "do_work",
+                  "response": {
+                    "result": "I/O completed"
+                  }
+                }
+              }
+            ],
+            "role": "user"
+          },
+          "invocation_id": "e-e9fe8d9f-870a-4619-bb35-07625f85491c",
+          "author": "writer",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "writer@1"
+          },
+          "id": "e2758ea0-9d51-4b89-b8a4-5ccd68c38f1a",
+          "timestamp": 1792547734.383072
+        }
+      },
+      {
+        "cursor": 30,
+        "time": 1792547734.383996,
+        "kind": "message_delivered",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "id": "613c80f68ee846799c2eff96f731fd19"
+        }
+      },
+      {
+        "cursor": 31,
+        "time": 1792547734.384199,
+        "kind": "adk_event",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-b4188dfa-e57c-4d49-b64a-94ecb1cfffe4",
+                  "args": {},
+                  "name": "propose"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-211f960c-a9c6-4ac2-8b79-b2678b182f9c",
+          "author": "critic",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "critic@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "949d75ae-358f-4292-8a3e-3af4906b8cc2",
+          "timestamp": 1792547734.38375
+        }
+      },
+      {
+        "cursor": 32,
+        "time": 1792547734.384245,
+        "kind": "adk_event",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "id": "adk-700dacc5-aa30-45a8-ab76-9a775580d2c7",
+                  "args": {},
+                  "name": "propose"
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-e9fe8d9f-870a-4619-bb35-07625f85491c",
+          "author": "writer",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "writer@1"
+          },
+          "long_running_tool_ids": [],
+          "id": "f244b833-aa97-40db-8ef2-5930c3c35089",
+          "timestamp": 1792547734.383949
+        }
+      },
+      {
+        "cursor": 33,
+        "time": 1792547734.384762,
+        "kind": "adk_event",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_response": {
+                  "id": "adk-b4188dfa-e57c-4d49-b64a-94ecb1cfffe4",
+                  "name": "propose",
+                  "response": {
+                    "result": "proposed privately"
+                  }
+                }
+              }
+            ],
+            "role": "user"
+          },
+          "invocation_id": "e-211f960c-a9c6-4ac2-8b79-b2678b182f9c",
+          "author": "critic",
+          "actions": {
+            "state_delta": {
+              "decision": "different recommendation",
+              "review": "review complete"
+            },
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "critic@1"
+          },
+          "id": "18f3e9bd-a52b-4b2c-9a53-ceff5569cc20",
+          "timestamp": 1792547734.384432
+        }
+      },
+      {
+        "cursor": 34,
+        "time": 1792547734.38481,
+        "kind": "adk_event",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "function_response": {
+                  "id": "adk-700dacc5-aa30-45a8-ab76-9a775580d2c7",
+                  "name": "propose",
+                  "response": {
+                    "result": "proposed privately"
+                  }
+                }
+              }
+            ],
+            "role": "user"
+          },
+          "invocation_id": "e-e9fe8d9f-870a-4619-bb35-07625f85491c",
+          "author": "writer",
+          "actions": {
+            "state_delta": {
+              "draft": "draft using delivered evidence"
+            },
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "writer@1"
+          },
+          "id": "9cd6e6d3-5176-4e99-a02c-d27dca0e6416",
+          "timestamp": 1792547734.384608
+        }
+      },
+      {
+        "cursor": 35,
+        "time": 1792547734.385622,
+        "kind": "adk_event",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "text": "critic completed"
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-211f960c-a9c6-4ac2-8b79-b2678b182f9c",
+          "author": "critic",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "critic@1"
+          },
+          "id": "e3bbe7fa-49a5-4832-b94c-d20559a81020",
+          "timestamp": 1792547734.38525
+        }
+      },
+      {
+        "cursor": 36,
+        "time": 1792547734.385668,
+        "kind": "adk_event",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "content": {
+            "parts": [
+              {
+                "text": "writer completed"
+              }
+            ],
+            "role": "model"
+          },
+          "invocation_id": "e-e9fe8d9f-870a-4619-bb35-07625f85491c",
+          "author": "writer",
+          "actions": {
+            "state_delta": {},
+            "artifact_delta": {},
+            "requested_auth_configs": {},
+            "requested_tool_confirmations": {}
+          },
+          "node_info": {
+            "path": "writer@1"
+          },
+          "id": "bd5cae37-36e2-4200-8422-24d067b867f7",
+          "timestamp": 1792547734.385424
+        }
+      },
+      {
+        "cursor": 37,
+        "time": 1792547734.386025,
+        "kind": "task_terminal",
+        "task_id": "20ae479fe278435980290c52e80ce3e2",
+        "payload": {
+          "status": "succeeded",
+          "error": null
+        }
+      },
+      {
+        "cursor": 38,
+        "time": 1792547734.386126,
+        "kind": "task_terminal",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "status": "succeeded",
+          "error": null
+        }
+      },
+      {
+        "cursor": 39,
+        "time": 1792547734.387163,
+        "kind": "state_merged",
+        "task_id": "535c87b100494d148fff88a53a60dfa7",
+        "payload": {
+          "keys": [
+            "draft"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12', '3.13', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e '.[test]'
+      - run: ruff check src tests examples benchmarks
+      - run: ruff format --check src tests examples benchmarks
+      - run: python -m pytest -q
+      - run: python examples/team_demo.py
+      - run: python benchmarks/worker_capacity.py --repeats 2 --delay 0.05
