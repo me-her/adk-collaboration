@@ -147,3 +147,26 @@ The `ADK upstream validation` workflow accepts an exact fork commit and runs
 the full ADK unit suite on Linux with uv-managed Python 3.11–3.14. Its results
 validate that revision of the native proposal, separately from this project's
 own tests.
+
+The [native selection benchmark](upstream/native_first_result_benchmark.py)
+compares gathering all answers with accepting the first verified answer. Both
+policies start the same four real ADK agents, backed by local scripted models
+with 20, 60, 90, and 120 ms simulated delays. The first answer is rejected; the
+60 ms answer is accepted and the two remaining workers are cancelled and drained.
+[Raw measurements](evidence/native-first-result.json) include 12 repetitions per
+policy, rotating worker order, excluded warmups, and installed-code fingerprints.
+Run it against the patched wheel using the same uv environment as the smoke
+scripts. This measures selection and cleanup under simulated I/O, not production
+LLM latency, token savings, or a Python/Rust speed difference.
+
+Recorded against native ADK commit
+[`d36495f`](https://github.com/me-her/adk-python/commit/d36495faae14b7514bf05e9d41fe32fdf5e1298c):
+
+| Policy | Median wall time | Local model calls started | Answers emitted | Workers cancelled |
+| --- | --- | --- | --- | --- |
+| Gather all | 138.4 ms | 4 | 4 | 0 |
+| First acceptable | 80.6 ms | 4 | 2 | 2 |
+
+Both policies close all four model generators before returning. The timing
+includes fresh Agent, Runner, and session creation and cleanup, and excludes
+imports and process startup.

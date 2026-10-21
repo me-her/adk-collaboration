@@ -1,0 +1,1418 @@
+{
+  "metadata": {
+    "recorded_at_utc": "2026-10-21T03:37:52.615101+00:00",
+    "python": "3.12.12",
+    "python_executable": "/tmp/adk-agent-worker-wheel-venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "adk_version": "2.12.0",
+    "installed_module": "/private/tmp/adk-agent-worker-wheel-venv/lib/python3.12/site-packages/google/adk/workflow/_parallel_tasks.py",
+    "installed_module_sha256": "caab506e392f208fe8fa54d3a5494a673a9e283c3a58dd4fb097759eb06bd616",
+    "benchmark_sha256": "586c06966bc8432dc0845d3c1e1a660f873f4afaad1fc9aeac6b749f31a06dc7",
+    "repetitions_per_mode": 12,
+    "excluded_warmups_per_mode": 1,
+    "worker_delay_ms": {
+      "reject_20": 20,
+      "accept_60": 60,
+      "accept_90": 90,
+      "accept_120": 120
+    },
+    "ordering": "Worker spawn order rotates; policy order alternates each repetition.",
+    "wall_timing": "Fresh Agent/Runner/session creation through runner.close; excludes imports/process startup.",
+    "selection_timing": "Common release of all four model requests through policy result and worker cleanup.",
+    "provider_calls": 0,
+    "interpretation": "Selection policy: gather completes all work; first rejects the 20 ms answer, accepts the 60 ms answer, and cancels 90/120 ms losers.",
+    "limitations": "Scripted local models and simulated I/O only. Both modes start four requests. No Python/Rust, reasoning quality, production throughput, token, or provider-billing claim."
+  },
+  "summary": {
+    "gather": {
+      "median_wall_ms": 138.44010449247435,
+      "median_cpu_ms": 20.825999999999954,
+      "median_selection_and_drain_ms": 123.4716460458003,
+      "min_wall_ms": 133.6240420350805,
+      "max_wall_ms": 141.2518749712035,
+      "requests_started_per_trial": 4,
+      "answers_emitted_per_trial": 4,
+      "cancelled_workers_per_trial": 0
+    },
+    "first": {
+      "median_wall_ms": 80.56108350865543,
+      "median_cpu_ms": 19.151500000000016,
+      "median_selection_and_drain_ms": 64.89066703943536,
+      "min_wall_ms": 77.80895894393325,
+      "max_wall_ms": 82.75275002233684,
+      "requests_started_per_trial": 4,
+      "answers_emitted_per_trial": 2,
+      "cancelled_workers_per_trial": 2
+    }
+  },
+  "runs": [
+    {
+      "repetition": 1,
+      "mode": "gather",
+      "worker_order": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "wall_ms": 133.62450001295656,
+      "cpu_ms": 14.529999999999987,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.35204205010086,
+      "statuses": {
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "completed",
+        "accept_120": "completed"
+      },
+      "worker_activity_ms": {
+        "reject_20": {
+          "request_entered_ms": 7.733083097264171,
+          "simulated_io_started_ms": 9.063833043910563,
+          "answer_emitted_ms": 29.478791053406894,
+          "generator_closed_ms": 29.951250064186752
+        },
+        "accept_60": {
+          "request_entered_ms": 8.233208092860878,
+          "simulated_io_started_ms": 9.0710410149768,
+          "answer_emitted_ms": 71.15420803893358,
+          "generator_closed_ms": 71.9845830462873
+        },
+        "accept_90": {
+          "request_entered_ms": 8.63258307799697,
+          "simulated_io_started_ms": 9.075333015061915,
+          "answer_emitted_ms": 101.13925009500235,
+          "generator_closed_ms": 101.86391603201628
+        },
+        "accept_120": {
+          "request_entered_ms": 9.018708020448685,
+          "simulated_io_started_ms": 9.079041075892746,
+          "answer_emitted_ms": 131.1498750001192,
+          "generator_closed_ms": 131.87508308328688
+        }
+      }
+    },
+    {
+      "repetition": 1,
+      "mode": "first",
+      "worker_order": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "wall_ms": 80.74591704644263,
+      "cpu_ms": 19.270999999999983,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 64.99104190152138,
+      "statuses": {
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "cancelled",
+        "accept_120": "cancelled"
+      },
+      "worker_activity_ms": {
+        "reject_20": {
+          "request_entered_ms": 11.848292080685496,
+          "simulated_io_started_ms": 14.600958093069494,
+          "answer_emitted_ms": 36.65129200089723,
+          "generator_closed_ms": 37.294792011380196
+        },
+        "accept_60": {
+          "request_entered_ms": 12.483000056818128,
+          "simulated_io_started_ms": 14.615333057008684,
+          "answer_emitted_ms": 76.69991708826274,
+          "generator_closed_ms": 77.53920799586922
+        },
+        "accept_90": {
+          "request_entered_ms": 12.99562503118068,
+          "simulated_io_started_ms": 14.621292008087039,
+          "generator_closed_ms": 78.52041709702462
+        },
+        "accept_120": {
+          "request_entered_ms": 14.52820806298405,
+          "simulated_io_started_ms": 14.627124997787178,
+          "generator_closed_ms": 78.98241700604558
+        }
+      }
+    },
+    {
+      "repetition": 2,
+      "mode": "first",
+      "worker_order": [
+        "accept_60",
+        "accept_90",
+        "accept_120",
+        "reject_20"
+      ],
+      "wall_ms": 78.95574998110533,
+      "cpu_ms": 17.235,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 64.77391696535051,
+      "statuses": {
+        "accept_60": "completed",
+        "accept_90": "cancelled",
+        "accept_120": "cancelled",
+        "reject_20": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_60": {
+          "request_entered_ms": 11.701749986968935,
+          "simulated_io_started_ms": 13.366834027692676,
+          "answer_emitted_ms": 75.44208399485797,
+          "generator_closed_ms": 76.16758404765278
+        },
+        "accept_90": {
+          "request_entered_ms": 12.31283403467387,
+          "simulated_io_started_ms": 13.379167066887021,
+          "generator_closed_ms": 77.05766707658768
+        },
+        "accept_120": {
+          "request_entered_ms": 12.808667030185461,
+          "simulated_io_started_ms": 13.385666999965906,
+          "generator_closed_ms": 77.57029205095023
+        },
+        "reject_20": {
+          "request_entered_ms": 13.305042055435479,
+          "simulated_io_started_ms": 13.391375076025724,
+          "answer_emitted_ms": 35.44929204508662,
+          "generator_closed_ms": 35.88366706389934
+        }
+      }
+    },
+    {
+      "repetition": 2,
+      "mode": "gather",
+      "worker_order": [
+        "accept_60",
+        "accept_90",
+        "accept_120",
+        "reject_20"
+      ],
+      "wall_ms": 137.77387503068894,
+      "cpu_ms": 18.684000000000033,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.72116697952151,
+      "statuses": {
+        "accept_60": "completed",
+        "accept_90": "completed",
+        "accept_120": "completed",
+        "reject_20": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_60": {
+          "request_entered_ms": 10.798500035889447,
+          "simulated_io_started_ms": 12.52270897384733,
+          "answer_emitted_ms": 74.5917089516297,
+          "generator_closed_ms": 75.33512497320771
+        },
+        "accept_90": {
+          "request_entered_ms": 11.421625036746264,
+          "simulated_io_started_ms": 12.533375062048435,
+          "answer_emitted_ms": 104.61104195564985,
+          "generator_closed_ms": 105.38258403539658
+        },
+        "accept_120": {
+          "request_entered_ms": 11.935375048778951,
+          "simulated_io_started_ms": 12.539791991002858,
+          "answer_emitted_ms": 134.61850001476705,
+          "generator_closed_ms": 135.5106249684468
+        },
+        "reject_20": {
+          "request_entered_ms": 12.462042039260268,
+          "simulated_io_started_ms": 12.545458972454071,
+          "answer_emitted_ms": 34.60991696920246,
+          "generator_closed_ms": 35.01383401453495
+        }
+      }
+    },
+    {
+      "repetition": 3,
+      "mode": "gather",
+      "worker_order": [
+        "accept_90",
+        "accept_120",
+        "reject_20",
+        "accept_60"
+      ],
+      "wall_ms": 138.67154193576425,
+      "cpu_ms": 20.515999999999977,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.7930420320481,
+      "statuses": {
+        "accept_90": "completed",
+        "accept_120": "completed",
+        "reject_20": "completed",
+        "accept_60": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_90": {
+          "request_entered_ms": 12.076791957952082,
+          "simulated_io_started_ms": 13.356124982237816,
+          "answer_emitted_ms": 105.44483293779194,
+          "generator_closed_ms": 106.26779193989933
+        },
+        "accept_120": {
+          "request_entered_ms": 12.616207939572632,
+          "simulated_io_started_ms": 13.372541987337172,
+          "answer_emitted_ms": 135.51275001373142,
+          "generator_closed_ms": 136.49045792408288
+        },
+        "reject_20": {
+          "request_entered_ms": 12.959707994014025,
+          "simulated_io_started_ms": 13.38058291003108,
+          "answer_emitted_ms": 35.50666698720306,
+          "generator_closed_ms": 36.18929197546095
+        },
+        "accept_60": {
+          "request_entered_ms": 13.298582984134555,
+          "simulated_io_started_ms": 13.387832907028496,
+          "answer_emitted_ms": 74.14737495128065,
+          "generator_closed_ms": 75.20837499760091
+        }
+      }
+    },
+    {
+      "repetition": 3,
+      "mode": "first",
+      "worker_order": [
+        "accept_90",
+        "accept_120",
+        "reject_20",
+        "accept_60"
+      ],
+      "wall_ms": 81.67995896656066,
+      "cpu_ms": 21.309999999999995,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 63.79166594706476,
+      "statuses": {
+        "accept_90": "cancelled",
+        "accept_120": "cancelled",
+        "reject_20": "completed",
+        "accept_60": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_90": {
+          "request_entered_ms": 13.576125027611852,
+          "simulated_io_started_ms": 16.97812497150153,
+          "generator_closed_ms": 80.04166698083282
+        },
+        "accept_120": {
+          "request_entered_ms": 14.242958975955844,
+          "simulated_io_started_ms": 16.999167040921748,
+          "generator_closed_ms": 80.3680419921875
+        },
+        "reject_20": {
+          "request_entered_ms": 14.801500015892088,
+          "simulated_io_started_ms": 17.00912497472018,
+          "answer_emitted_ms": 39.11033400800079,
+          "generator_closed_ms": 39.731667027808726
+        },
+        "accept_60": {
+          "request_entered_ms": 16.884749988093972,
+          "simulated_io_started_ms": 17.016959027387202,
+          "answer_emitted_ms": 77.97641702927649,
+          "generator_closed_ms": 78.93541699741036
+        }
+      }
+    },
+    {
+      "repetition": 4,
+      "mode": "first",
+      "worker_order": [
+        "accept_120",
+        "reject_20",
+        "accept_60",
+        "accept_90"
+      ],
+      "wall_ms": 80.26170800440013,
+      "cpu_ms": 18.944000000000017,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 63.863374991342425,
+      "statuses": {
+        "accept_120": "cancelled",
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "cancelled"
+      },
+      "worker_activity_ms": {
+        "accept_120": {
+          "request_entered_ms": 13.801999972201884,
+          "simulated_io_started_ms": 15.907417051494122,
+          "generator_closed_ms": 79.21379199251533
+        },
+        "reject_20": {
+          "request_entered_ms": 14.669125084765255,
+          "simulated_io_started_ms": 15.916457981802523,
+          "answer_emitted_ms": 37.981417030096054,
+          "generator_closed_ms": 38.69329206645489
+        },
+        "accept_60": {
+          "request_entered_ms": 15.283707994967699,
+          "simulated_io_started_ms": 15.920417034067214,
+          "answer_emitted_ms": 78.00829201005399,
+          "generator_closed_ms": 78.60995805822313
+        },
+        "accept_90": {
+          "request_entered_ms": 15.856957994401455,
+          "simulated_io_started_ms": 15.92391706071794,
+          "generator_closed_ms": 79.4561670627445
+        }
+      }
+    },
+    {
+      "repetition": 4,
+      "mode": "gather",
+      "worker_order": [
+        "accept_120",
+        "reject_20",
+        "accept_60",
+        "accept_90"
+      ],
+      "wall_ms": 133.6240420350805,
+      "cpu_ms": 16.11400000000002,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 122.88654199801385,
+      "statuses": {
+        "accept_120": "completed",
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_120": {
+          "request_entered_ms": 8.130417088977993,
+          "simulated_io_started_ms": 9.64262499473989,
+          "answer_emitted_ms": 130.7332500582561,
+          "generator_closed_ms": 131.78516703192145
+        },
+        "reject_20": {
+          "request_entered_ms": 8.650500094518065,
+          "simulated_io_started_ms": 9.655334055423737,
+          "answer_emitted_ms": 31.686542090028524,
+          "generator_closed_ms": 31.942542060278356
+        },
+        "accept_60": {
+          "request_entered_ms": 9.084625053219497,
+          "simulated_io_started_ms": 9.661999996751547,
+          "answer_emitted_ms": 71.8209589831531,
+          "generator_closed_ms": 72.76979205198586
+        },
+        "accept_90": {
+          "request_entered_ms": 9.58529207855463,
+          "simulated_io_started_ms": 9.667084086686373,
+          "answer_emitted_ms": 100.72333400603384,
+          "generator_closed_ms": 101.82537499349564
+        }
+      }
+    },
+    {
+      "repetition": 5,
+      "mode": "gather",
+      "worker_order": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "wall_ms": 140.13658300973475,
+      "cpu_ms": 22.17399999999997,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.7527079647407,
+      "statuses": {
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "completed",
+        "accept_120": "completed"
+      },
+      "worker_activity_ms": {
+        "reject_20": {
+          "request_entered_ms": 13.33745801821351,
+          "simulated_io_started_ms": 15.21116599906236,
+          "answer_emitted_ms": 37.327750003896654,
+          "generator_closed_ms": 38.055250071920455
+        },
+        "accept_60": {
+          "request_entered_ms": 13.953458052128553,
+          "simulated_io_started_ms": 15.219166059978306,
+          "answer_emitted_ms": 76.75087498500943,
+          "generator_closed_ms": 77.81066605821252
+        },
+        "accept_90": {
+          "request_entered_ms": 14.514832990244031,
+          "simulated_io_started_ms": 15.223165974020958,
+          "answer_emitted_ms": 107.31979098636657,
+          "generator_closed_ms": 108.22562500834465
+        },
+        "accept_120": {
+          "request_entered_ms": 15.16220800112933,
+          "simulated_io_started_ms": 15.226708026602864,
+          "answer_emitted_ms": 137.34050001949072,
+          "generator_closed_ms": 138.29087500926107
+        }
+      }
+    },
+    {
+      "repetition": 5,
+      "mode": "first",
+      "worker_order": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "wall_ms": 82.75275002233684,
+      "cpu_ms": 21.25100000000002,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 65.6332919606939,
+      "statuses": {
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "cancelled",
+        "accept_120": "cancelled"
+      },
+      "worker_activity_ms": {
+        "reject_20": {
+          "request_entered_ms": 13.825625064782798,
+          "simulated_io_started_ms": 16.029125079512596,
+          "answer_emitted_ms": 38.135958020575345,
+          "generator_closed_ms": 38.77650003414601
+        },
+        "accept_60": {
+          "request_entered_ms": 14.141125022433698,
+          "simulated_io_started_ms": 16.043958021327853,
+          "answer_emitted_ms": 78.17554206121713,
+          "generator_closed_ms": 79.279207973741
+        },
+        "accept_90": {
+          "request_entered_ms": 14.412792050279677,
+          "simulated_io_started_ms": 16.0519580822438,
+          "generator_closed_ms": 80.49829199444503
+        },
+        "accept_120": {
+          "request_entered_ms": 15.957375057041645,
+          "simulated_io_started_ms": 16.05887501500547,
+          "generator_closed_ms": 81.05408307164907
+        }
+      }
+    },
+    {
+      "repetition": 6,
+      "mode": "first",
+      "worker_order": [
+        "accept_60",
+        "accept_90",
+        "accept_120",
+        "reject_20"
+      ],
+      "wall_ms": 82.26283395197242,
+      "cpu_ms": 21.05699999999999,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 65.28679199982435,
+      "statuses": {
+        "accept_60": "completed",
+        "accept_90": "cancelled",
+        "accept_120": "cancelled",
+        "reject_20": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_60": {
+          "request_entered_ms": 13.917208998464048,
+          "simulated_io_started_ms": 16.028708894737065,
+          "answer_emitted_ms": 78.15041695721447,
+          "generator_closed_ms": 79.1315418900922
+        },
+        "accept_90": {
+          "request_entered_ms": 14.673833968117833,
+          "simulated_io_started_ms": 16.052041901275516,
+          "generator_closed_ms": 80.28658397961408
+        },
+        "accept_120": {
+          "request_entered_ms": 15.293624950572848,
+          "simulated_io_started_ms": 16.062374925240874,
+          "generator_closed_ms": 80.78349998686463
+        },
+        "reject_20": {
+          "request_entered_ms": 15.943124890327454,
+          "simulated_io_started_ms": 16.072208993136883,
+          "answer_emitted_ms": 38.19224995095283,
+          "generator_closed_ms": 38.95133396144956
+        }
+      }
+    },
+    {
+      "repetition": 6,
+      "mode": "gather",
+      "worker_order": [
+        "accept_60",
+        "accept_90",
+        "accept_120",
+        "reject_20"
+      ],
+      "wall_ms": 141.2518749712035,
+      "cpu_ms": 24.082999999999966,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.86150006204844,
+      "statuses": {
+        "accept_60": "completed",
+        "accept_90": "completed",
+        "accept_120": "completed",
+        "reject_20": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_60": {
+          "request_entered_ms": 14.049666933715343,
+          "simulated_io_started_ms": 16.176541917957366,
+          "answer_emitted_ms": 76.8802500097081,
+          "generator_closed_ms": 78.35637498646975
+        },
+        "accept_90": {
+          "request_entered_ms": 14.870874932967126,
+          "simulated_io_started_ms": 16.191583941690624,
+          "answer_emitted_ms": 108.28270902857184,
+          "generator_closed_ms": 109.14745891932398
+        },
+        "accept_120": {
+          "request_entered_ms": 15.44479199219495,
+          "simulated_io_started_ms": 16.200084006413817,
+          "answer_emitted_ms": 138.33300000987947,
+          "generator_closed_ms": 139.32154199574143
+        },
+        "reject_20": {
+          "request_entered_ms": 16.101666959002614,
+          "simulated_io_started_ms": 16.207374981604517,
+          "answer_emitted_ms": 37.82354202121496,
+          "generator_closed_ms": 38.71012502349913
+        }
+      }
+    },
+    {
+      "repetition": 7,
+      "mode": "gather",
+      "worker_order": [
+        "accept_90",
+        "accept_120",
+        "reject_20",
+        "accept_60"
+      ],
+      "wall_ms": 138.20866704918444,
+      "cpu_ms": 21.170000000000023,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 122.19666701275855,
+      "statuses": {
+        "accept_90": "completed",
+        "accept_120": "completed",
+        "reject_20": "completed",
+        "accept_60": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_90": {
+          "request_entered_ms": 13.059791992418468,
+          "simulated_io_started_ms": 14.648042037151754,
+          "answer_emitted_ms": 105.67216703202575,
+          "generator_closed_ms": 106.54483397956938
+        },
+        "accept_120": {
+          "request_entered_ms": 13.85545905213803,
+          "simulated_io_started_ms": 14.663791982457042,
+          "answer_emitted_ms": 135.38783404510468,
+          "generator_closed_ms": 136.2245420459658
+        },
+        "reject_20": {
+          "request_entered_ms": 14.232333982363343,
+          "simulated_io_started_ms": 14.673124998807907,
+          "answer_emitted_ms": 36.778417066670954,
+          "generator_closed_ms": 37.33566706068814
+        },
+        "accept_60": {
+          "request_entered_ms": 14.5822090562433,
+          "simulated_io_started_ms": 14.685124973766506,
+          "answer_emitted_ms": 76.77033403888345,
+          "generator_closed_ms": 77.61141704395413
+        }
+      }
+    },
+    {
+      "repetition": 7,
+      "mode": "first",
+      "worker_order": [
+        "accept_90",
+        "accept_120",
+        "reject_20",
+        "accept_60"
+      ],
+      "wall_ms": 77.80895894393325,
+      "cpu_ms": 17.94399999999996,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 63.310874975286424,
+      "statuses": {
+        "accept_90": "cancelled",
+        "accept_120": "cancelled",
+        "reject_20": "completed",
+        "accept_60": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_90": {
+          "request_entered_ms": 11.806083959527314,
+          "simulated_io_started_ms": 13.613041955977678,
+          "generator_closed_ms": 76.18283398915082
+        },
+        "accept_120": {
+          "request_entered_ms": 12.144792010076344,
+          "simulated_io_started_ms": 13.627958949655294,
+          "generator_closed_ms": 76.51337492279708
+        },
+        "reject_20": {
+          "request_entered_ms": 12.413416989147663,
+          "simulated_io_started_ms": 13.635666924528778,
+          "answer_emitted_ms": 35.72974994312972,
+          "generator_closed_ms": 36.37587500270456
+        },
+        "accept_60": {
+          "request_entered_ms": 13.53374996688217,
+          "simulated_io_started_ms": 13.642792007885873,
+          "answer_emitted_ms": 74.08641697838902,
+          "generator_closed_ms": 75.03800000995398
+        }
+      }
+    },
+    {
+      "repetition": 8,
+      "mode": "first",
+      "worker_order": [
+        "accept_120",
+        "reject_20",
+        "accept_60",
+        "accept_90"
+      ],
+      "wall_ms": 79.84245801344514,
+      "cpu_ms": 18.30899999999991,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 64.92520903702825,
+      "statuses": {
+        "accept_120": "cancelled",
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "cancelled"
+      },
+      "worker_activity_ms": {
+        "accept_120": {
+          "request_entered_ms": 12.107708025723696,
+          "simulated_io_started_ms": 13.94633308518678,
+          "generator_closed_ms": 78.14670808147639
+        },
+        "reject_20": {
+          "request_entered_ms": 12.745790998451412,
+          "simulated_io_started_ms": 13.954624999314547,
+          "answer_emitted_ms": 36.05745802633464,
+          "generator_closed_ms": 36.64599999319762
+        },
+        "accept_60": {
+          "request_entered_ms": 13.25987500604242,
+          "simulated_io_started_ms": 13.959458097815514,
+          "answer_emitted_ms": 76.09404099639505,
+          "generator_closed_ms": 77.06516608595848
+        },
+        "accept_90": {
+          "request_entered_ms": 13.886500033549964,
+          "simulated_io_started_ms": 13.963291072286665,
+          "generator_closed_ms": 78.45050003379583
+        }
+      }
+    },
+    {
+      "repetition": 8,
+      "mode": "gather",
+      "worker_order": [
+        "accept_120",
+        "reject_20",
+        "accept_60",
+        "accept_90"
+      ],
+      "wall_ms": 139.30158398579806,
+      "cpu_ms": 21.13599999999993,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.59125004149973,
+      "statuses": {
+        "accept_120": "completed",
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_120": {
+          "request_entered_ms": 12.495125061832368,
+          "simulated_io_started_ms": 14.201999991200864,
+          "answer_emitted_ms": 136.29137503448874,
+          "generator_closed_ms": 137.10854202508926
+        },
+        "reject_20": {
+          "request_entered_ms": 13.098000083118677,
+          "simulated_io_started_ms": 14.209583983756602,
+          "answer_emitted_ms": 36.309916991740465,
+          "generator_closed_ms": 36.87025001272559
+        },
+        "accept_60": {
+          "request_entered_ms": 13.756916974671185,
+          "simulated_io_started_ms": 14.2137500224635,
+          "answer_emitted_ms": 76.31470903288573,
+          "generator_closed_ms": 77.25275005213916
+        },
+        "accept_90": {
+          "request_entered_ms": 14.141750056296587,
+          "simulated_io_started_ms": 14.22070898115635,
+          "answer_emitted_ms": 105.60100001748651,
+          "generator_closed_ms": 106.56895907595754
+        }
+      }
+    },
+    {
+      "repetition": 9,
+      "mode": "gather",
+      "worker_order": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "wall_ms": 139.6037080558017,
+      "cpu_ms": 21.553000000000043,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 122.96754203271121,
+      "statuses": {
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "completed",
+        "accept_120": "completed"
+      },
+      "worker_activity_ms": {
+        "reject_20": {
+          "request_entered_ms": 13.67175008635968,
+          "simulated_io_started_ms": 15.328125096857548,
+          "answer_emitted_ms": 37.42533305194229,
+          "generator_closed_ms": 37.872625049203634
+        },
+        "accept_60": {
+          "request_entered_ms": 14.269625069573522,
+          "simulated_io_started_ms": 15.342292026616633,
+          "answer_emitted_ms": 75.50850010011345,
+          "generator_closed_ms": 76.52012503240258
+        },
+        "accept_90": {
+          "request_entered_ms": 14.747792039997876,
+          "simulated_io_started_ms": 15.349167049862444,
+          "answer_emitted_ms": 105.88866705074906,
+          "generator_closed_ms": 106.70137510169297
+        },
+        "accept_120": {
+          "request_entered_ms": 15.265249996446073,
+          "simulated_io_started_ms": 15.355292009189725,
+          "answer_emitted_ms": 136.92679209634662,
+          "generator_closed_ms": 137.69908307585865
+        }
+      }
+    },
+    {
+      "repetition": 9,
+      "mode": "first",
+      "worker_order": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "wall_ms": 81.65679208468646,
+      "cpu_ms": 20.081000000000017,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 64.85612504184246,
+      "statuses": {
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "cancelled",
+        "accept_120": "cancelled"
+      },
+      "worker_activity_ms": {
+        "reject_20": {
+          "request_entered_ms": 13.546125032007694,
+          "simulated_io_started_ms": 15.909875044599175,
+          "answer_emitted_ms": 38.02104201167822,
+          "generator_closed_ms": 38.59783406369388
+        },
+        "accept_60": {
+          "request_entered_ms": 14.126292080618441,
+          "simulated_io_started_ms": 15.925917075946927,
+          "answer_emitted_ms": 78.04400008171797,
+          "generator_closed_ms": 78.9971670601517
+        },
+        "accept_90": {
+          "request_entered_ms": 14.779292047023773,
+          "simulated_io_started_ms": 15.93366707675159,
+          "generator_closed_ms": 80.07558400277048
+        },
+        "accept_120": {
+          "request_entered_ms": 15.851999982260168,
+          "simulated_io_started_ms": 15.941584017127752,
+          "generator_closed_ms": 80.38195897825062
+        }
+      }
+    },
+    {
+      "repetition": 10,
+      "mode": "first",
+      "worker_order": [
+        "accept_60",
+        "accept_90",
+        "accept_120",
+        "reject_20"
+      ],
+      "wall_ms": 80.1470410078764,
+      "cpu_ms": 18.75300000000002,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 65.17591595184058,
+      "statuses": {
+        "accept_60": "completed",
+        "accept_90": "cancelled",
+        "accept_120": "cancelled",
+        "reject_20": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_60": {
+          "request_entered_ms": 12.717250036075711,
+          "simulated_io_started_ms": 14.085666043683887,
+          "answer_emitted_ms": 76.18662505410612,
+          "generator_closed_ms": 77.14783307164907
+        },
+        "accept_90": {
+          "request_entered_ms": 13.371790992096066,
+          "simulated_io_started_ms": 14.100166037678719,
+          "generator_closed_ms": 78.21520802099258
+        },
+        "accept_120": {
+          "request_entered_ms": 13.722583069466054,
+          "simulated_io_started_ms": 14.108375064097345,
+          "generator_closed_ms": 78.68704106658697
+        },
+        "reject_20": {
+          "request_entered_ms": 14.028333011083305,
+          "simulated_io_started_ms": 14.115791069343686,
+          "answer_emitted_ms": 34.37895805109292,
+          "generator_closed_ms": 34.98500003479421
+        }
+      }
+    },
+    {
+      "repetition": 10,
+      "mode": "gather",
+      "worker_order": [
+        "accept_60",
+        "accept_90",
+        "accept_120",
+        "reject_20"
+      ],
+      "wall_ms": 137.41379196289927,
+      "cpu_ms": 19.758999999999972,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 122.46650003362447,
+      "statuses": {
+        "accept_60": "completed",
+        "accept_90": "completed",
+        "accept_120": "completed",
+        "reject_20": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_60": {
+          "request_entered_ms": 12.03870796598494,
+          "simulated_io_started_ms": 13.82666698191315,
+          "answer_emitted_ms": 74.30737500544637,
+          "generator_closed_ms": 75.11462492402643
+        },
+        "accept_90": {
+          "request_entered_ms": 12.653250014409423,
+          "simulated_io_started_ms": 13.840792002156377,
+          "answer_emitted_ms": 104.18920801021159,
+          "generator_closed_ms": 104.96787494048476
+        },
+        "accept_120": {
+          "request_entered_ms": 13.192832935601473,
+          "simulated_io_started_ms": 13.84758297353983,
+          "answer_emitted_ms": 134.7390830051154,
+          "generator_closed_ms": 135.67962497472763
+        },
+        "reject_20": {
+          "request_entered_ms": 13.758999994024634,
+          "simulated_io_started_ms": 13.85595800820738,
+          "answer_emitted_ms": 35.9305830206722,
+          "generator_closed_ms": 36.403542035259306
+        }
+      }
+    },
+    {
+      "repetition": 11,
+      "mode": "gather",
+      "worker_order": [
+        "accept_90",
+        "accept_120",
+        "reject_20",
+        "accept_60"
+      ],
+      "wall_ms": 136.70625002123415,
+      "cpu_ms": 19.562999999999995,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 121.66362500283867,
+      "statuses": {
+        "accept_90": "completed",
+        "accept_120": "completed",
+        "reject_20": "completed",
+        "accept_60": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_90": {
+          "request_entered_ms": 12.34899996779859,
+          "simulated_io_started_ms": 14.016625005751848,
+          "answer_emitted_ms": 105.14995793346316,
+          "generator_closed_ms": 105.92237499076873
+        },
+        "accept_120": {
+          "request_entered_ms": 12.954666977748275,
+          "simulated_io_started_ms": 14.031208003871143,
+          "answer_emitted_ms": 134.3441669596359,
+          "generator_closed_ms": 135.11941698379815
+        },
+        "reject_20": {
+          "request_entered_ms": 13.436374953016639,
+          "simulated_io_started_ms": 14.03791701886803,
+          "answer_emitted_ms": 35.49379203468561,
+          "generator_closed_ms": 35.959749948233366
+        },
+        "accept_60": {
+          "request_entered_ms": 13.957499992102385,
+          "simulated_io_started_ms": 14.044292038306594,
+          "answer_emitted_ms": 75.38387493696064,
+          "generator_closed_ms": 76.17887493688613
+        }
+      }
+    },
+    {
+      "repetition": 11,
+      "mode": "first",
+      "worker_order": [
+        "accept_90",
+        "accept_120",
+        "reject_20",
+        "accept_60"
+      ],
+      "wall_ms": 82.69262500107288,
+      "cpu_ms": 21.09300000000003,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 65.06137503311038,
+      "statuses": {
+        "accept_90": "cancelled",
+        "accept_120": "cancelled",
+        "reject_20": "completed",
+        "accept_60": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_90": {
+          "request_entered_ms": 12.643333058804274,
+          "simulated_io_started_ms": 16.671083052642643,
+          "generator_closed_ms": 80.68137499503791
+        },
+        "accept_120": {
+          "request_entered_ms": 13.437292072921991,
+          "simulated_io_started_ms": 16.685792012140155,
+          "generator_closed_ms": 81.18566707707942
+        },
+        "reject_20": {
+          "request_entered_ms": 14.195249998010695,
+          "simulated_io_started_ms": 16.69449999462813,
+          "answer_emitted_ms": 37.286542006768286,
+          "generator_closed_ms": 37.814625073224306
+        },
+        "accept_60": {
+          "request_entered_ms": 16.590000013820827,
+          "simulated_io_started_ms": 16.701542073860765,
+          "answer_emitted_ms": 78.79720802884549,
+          "generator_closed_ms": 79.60158307105303
+        }
+      }
+    },
+    {
+      "repetition": 12,
+      "mode": "first",
+      "worker_order": [
+        "accept_120",
+        "reject_20",
+        "accept_60",
+        "accept_90"
+      ],
+      "wall_ms": 80.37624997086823,
+      "cpu_ms": 19.03200000000005,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 64.74454200360924,
+      "statuses": {
+        "accept_120": "cancelled",
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "cancelled"
+      },
+      "worker_activity_ms": {
+        "accept_120": {
+          "request_entered_ms": 12.619165936484933,
+          "simulated_io_started_ms": 14.74716595839709,
+          "generator_closed_ms": 78.7649160483852
+        },
+        "reject_20": {
+          "request_entered_ms": 13.255666010081768,
+          "simulated_io_started_ms": 14.762875041924417,
+          "answer_emitted_ms": 36.86979098711163,
+          "generator_closed_ms": 37.466541049070656
+        },
+        "accept_60": {
+          "request_entered_ms": 13.776291045360267,
+          "simulated_io_started_ms": 14.773083035834134,
+          "answer_emitted_ms": 76.69341599103063,
+          "generator_closed_ms": 77.65037496574223
+        },
+        "accept_90": {
+          "request_entered_ms": 14.663749956525862,
+          "simulated_io_started_ms": 14.781333040446043,
+          "generator_closed_ms": 79.07533296383917
+        }
+      }
+    },
+    {
+      "repetition": 12,
+      "mode": "gather",
+      "worker_order": [
+        "accept_120",
+        "reject_20",
+        "accept_60",
+        "accept_90"
+      ],
+      "wall_ms": 139.56537493504584,
+      "cpu_ms": 21.619000000000057,
+      "model_requests_started": 4,
+      "model_answers_emitted": [
+        "reject_20",
+        "accept_60",
+        "accept_90",
+        "accept_120"
+      ],
+      "peak_active_models": 4,
+      "closed_workers": [
+        "accept_120",
+        "accept_60",
+        "accept_90",
+        "reject_20"
+      ],
+      "selection_and_drain_ms": 123.8450410310179,
+      "statuses": {
+        "accept_120": "completed",
+        "reject_20": "completed",
+        "accept_60": "completed",
+        "accept_90": "completed"
+      },
+      "worker_activity_ms": {
+        "accept_120": {
+          "request_entered_ms": 12.448915978893638,
+          "simulated_io_started_ms": 14.592332998290658,
+          "answer_emitted_ms": 136.57041592523456,
+          "generator_closed_ms": 137.6881659962237
+        },
+        "reject_20": {
+          "request_entered_ms": 13.083749916404486,
+          "simulated_io_started_ms": 14.606332988478243,
+          "answer_emitted_ms": 36.678874981589615,
+          "generator_closed_ms": 37.278749980032444
+        },
+        "accept_60": {
+          "request_entered_ms": 13.76699993852526,
+          "simulated_io_started_ms": 14.615749940276146,
+          "answer_emitted_ms": 76.72012492548674,
+          "generator_closed_ms": 77.67499994952232
+        },
+        "accept_90": {
+          "request_entered_ms": 14.51245800126344,
+          "simulated_io_started_ms": 14.623999944888055,
+          "answer_emitted_ms": 105.54666595999151,
+          "generator_closed_ms": 106.42695799469948
+        }
+      }
+    }
+  ]
+}
