@@ -20,11 +20,10 @@ Python 3.11 or later is required. The tests and demo use deterministic local
 models, make no provider calls, and need no credentials.
 
 ```sh
-uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python -e '.[test]'
-.venv/bin/python -m pytest -q
-.venv/bin/python examples/team_demo.py
-.venv/bin/python benchmarks/worker_capacity.py
+uv sync --python 3.12 --extra test
+uv run --no-sync pytest -q
+uv run --no-sync python examples/team_demo.py
+uv run --no-sync python benchmarks/worker_capacity.py
 ```
 
 The demo runs a real ADK coordinator whose model calls the team tools. It starts
@@ -130,15 +129,21 @@ private session history and model/tool implementation memory are separate.
 
 ## Upstream path
 
-The small `Agent(parallel_worker=True, max_parallel_workers=...)` change lives
-in [upstream issue #7641](https://github.com/google/adk-python/issues/7641).
-[RFC #7642](https://github.com/google/adk-python/issues/7642) requests feedback
-on the broader contract and links the executable evidence. This experiment asks for agreement on lifecycle
-semantics before proposing core APIs. See [the design proposal](docs/proposal.md)
-for acceptance criteria and links to existing work. Possible focused pieces
-include progress observation, cancellation states, or acknowledged messaging,
-depending on maintainer direction.
+A single [upstream PR #7643](https://github.com/google/adk-python/pull/7643)
+is developing a native workflow task group alongside the agent-worker limit.
+[RFC #7642](https://github.com/google/adk-python/issues/7642) tracks the broader
+discussion. The native proposal reuses ADK's node scheduler and session history;
+its API and state semantics differ from this independent experiment.
 
-The separate [installed-wheel smoke test](upstream/agent_worker_smoke.py)
-checks the proposed agent-worker limit. It requires the patched ADK wheel;
-the collaboration extension itself runs against the published package.
+The separate installed-wheel smoke scripts check
+[agent-worker limits](upstream/agent_worker_smoke.py) and
+[native parallel collaboration](upstream/parallel_tasks_smoke.py). They require
+the patched ADK wheel; the collaboration extension itself runs against the
+published package. After building and installing the patched wheel into a uv
+environment, run both scripts with `uv run --no-project --python
+/path/to/environment/bin/python upstream/<script>.py`.
+
+The `ADK upstream validation` workflow accepts an exact fork commit and runs
+the full ADK unit suite on Linux with uv-managed Python 3.11–3.14. Its results
+validate that revision of the native proposal, separately from this project's
+own tests.
