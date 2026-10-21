@@ -31,9 +31,9 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Resolve dependencies with uv
         run: |
-          echo "UV_EXCLUDE_NEWER=$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+          export UV_EXCLUDE_NEWER="$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ)"
           uv python install
-          uv sync --frozen --extra test --no-install-package lancedb
+          uv sync --extra test --no-install-package lancedb
       - name: Full ADK unit suite
         run: uv run --no-sync pytest tests/unittests -n auto --junitxml=unit-results.xml
       - name: Preserve results
