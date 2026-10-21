@@ -1,0 +1,44 @@
+name: ADK upstream validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: Exact me-her/adk-python commit to validate
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13', '3.14']
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        with:
+          repository: me-her/adk-python
+          ref: ${{ inputs.revision }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python }}
+      - name: Resolve dependencies with uv
+        run: |
+          echo "UV_EXCLUDE_NEWER=$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+          uv python install
+          uv sync --frozen --extra test --no-install-package lancedb
+      - name: Full ADK unit suite
+        run: uv run --no-sync pytest tests/unittests -n auto --junitxml=unit-results.xml
+      - name: Preserve results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-results-${{ matrix.python }}
+          path: unit-results.xml
